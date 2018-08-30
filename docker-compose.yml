@@ -32,7 +32,7 @@ services:
 
   ldap:
     image: geosync/ldap
-    build: ../georchestra/ldap
+    build: ../georchestra/ldap.geosync
     environment:
       - SLAPD_DC_STRING=dc=georchestra,dc=org
       - SLAPD_ORGANISATION=georchestra
