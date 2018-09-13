@@ -50,24 +50,3 @@ services:
 #      - geoserver_geodata:/mnt/geoserver_geodata
 #      - /docker/georchestra/geoserver_geodata:/mnt/geoserver_geodata
 
-  geosync:
-    build: ../georchestra/geosync
-    image: geosync/geosync
-    depends_on:
-      - ldap
-      - database
-      - geoserver
-      - geonetwork
-    environment:
-      - TZ=Europe/Paris
-      # variables de production déplacées dans docker-compose.geosync-prod.yml
-      #- SERVER_URL=https://georchestra.mydomain.org
-      #- OCL_URL=https://owncloud.mydomain.org
-    volumes:
-      - /docker/georchestra/georchestra_ouvert:/home/georchestra-ouvert
-      - /docker/georchestra/georchestra_restreint:/home/georchestra-restreint
-      # volumes déplacés dans docker-compose.geosync-prod.yml pour un montage NFS
-      #- /docker/georchestra/geosync_dev_ouvert:/mnt/geosync_ouvert/owncloudsync
-      #- /docker/georchestra/geosync_dev_restreint:/mnt/geosync_restreint/owncloudsync
-    restart: always
-

@@ -31,5 +31,5 @@ Un cron est démarré dès le lancement du conteneur.
 
 ## lancement
 
-docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.geosync-prod.yml up --build -d
+docker-compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.geosync.yml -f docker-compose.geosync-prod.yml up --build -d
 
