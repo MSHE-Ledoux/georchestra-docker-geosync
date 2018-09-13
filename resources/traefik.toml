@@ -97,7 +97,7 @@ defaultEntryPoints = ["http", "https"]
   address = ":443"
     [entryPoints.https.tls]
       [[entryPoints.https.tls.certificates]]
-      certFile = "/etc/traefik/ssl/georchestra-docker_umrthema_univ-fcomte_fr.crt"
+      certFile = "/etc/traefik/ssl/georchestra-docker_umrthema_univ-fcomte_fr.pem"
       keyFile = "/etc/traefik/ssl/georchestra-docker.umrthema.univ-fcomte.fr.key"
 
 ################################################################
@@ -117,7 +117,7 @@ path = "/traefik"
 #
 # Optional
 
-CertFile = "/etc/traefik/ssl/georchestra-docker_umrthema_univ-fcomte_fr.crt"
+CertFile = "/etc/traefik/ssl/georchestra-docker_umrthema_univ-fcomte_fr.pem"
 KeyFile = "/etc/traefik/ssl/georchestra-docker.umrthema.univ-fcomte.fr.key"
 
 # Set REST API to read-only mode
@@ -156,7 +156,7 @@ endpoint = "unix:///var/run/docker.sock"
 #
 # Required
 #
-domain = "mydomain.org"
+domain = "umrthema.univ-fcomte.fr"
 
 # Enable watch docker changes
 #

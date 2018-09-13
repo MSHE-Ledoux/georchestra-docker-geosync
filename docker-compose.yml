@@ -32,7 +32,7 @@ services:
 
   ldap:
     image: geosync/ldap
-    build: ../georchestra/ldap
+    build: ../georchestra/ldap.geosync
     environment:
       - SLAPD_DC_STRING=dc=georchestra,dc=org
       - SLAPD_ORGANISATION=georchestra
@@ -50,33 +50,13 @@ services:
       - ldap_config:/etc/ldap
     restart: always
 
-  geoserver:
-    image: geosync/geoserver
-    build: ../georchestra/geoserver/webapp/src/docker.geosync
-    depends_on:
-      - ldap
-    volumes:
-      #- geoserver_datadir:/mnt/geoserver_datadir
-      - /docker/georchestra/geoserver_datadir:/mnt/geoserver_datadir
-      #- geoserver_geodata:/mnt/geoserver_geodata
-      - /docker/georchestra/geoserver_geodata:/mnt/geoserver_geodata
-      - geoserver_tiles:/mnt/geoserver_tiles
-      - /etc/georchestra:/etc/georchestra
-    environment:
-      # variable de production déplacée dans docker-compose.geosync-prod.yml
-      #- SERVER_URL=https://georchestra.mydomain.org
-      - TZ=Europe/Paris
-      - XMS=256M
-      - XMX=8G
-    restart: always
-
   proxy:
     image: georchestra/security-proxy:latest
     depends_on:
       - ldap
       - database
     volumes:
-      - /etc/georchestra:/etc/georchestra
+      - ./config:/etc/georchestra
     environment:
       - XMS=256M
       - XMX=1G
@@ -87,10 +67,19 @@ services:
     depends_on:
       - ldap
     volumes:
-      - /etc/georchestra:/etc/georchestra
+      - ./config:/etc/georchestra
     environment:
       - XMS=256M
       - XMX=1G
+    restart: always
+
+  header:
+    image: georchestra/header:latest
+    volumes:
+      - ./config:/etc/georchestra
+    environment:
+      - XMS=256M
+      - XMX=512M
     restart: always
 
   mapfishapp:
@@ -98,7 +87,7 @@ services:
     depends_on:
       - database
     volumes:
-      - /etc/georchestra:/etc/georchestra
+      - ./config:/etc/georchestra
       - mapfishapp_uploads:/mnt/mapfishapp_uploads
     environment:
       - XMS=256M
@@ -110,33 +99,43 @@ services:
     depends_on:
       - database
     volumes:
-      - /etc/georchestra:/etc/georchestra
+      - ./config:/etc/georchestra
       - extractorapp_extracts:/mnt/extractorapp_extracts
     environment:
       - XMS=256M
       - XMX=2G
     restart: always
 
-  header:
-    image: georchestra/header:latest
+  geoserver:
+    image: geosync/geoserver
+    build: ../georchestra/geoserver/webapp/src/docker.geosync
+    depends_on:
+      - ldap
     volumes:
-      - /etc/georchestra:/etc/georchestra
+      #- geoserver_datadir:/mnt/geoserver_datadir
+      - /docker/georchestra/geoserver_datadir:/mnt/geoserver_datadir
+      #- geoserver_geodata:/mnt/geoserver_geodata
+      - /docker/georchestra/geoserver_geodata:/mnt/geoserver_geodata
+      - geoserver_tiles:/mnt/geoserver_tiles
+      - ./config:/etc/georchestra
     environment:
+      # variable de production déplacée dans docker-compose.geosync-prod.yml
+      #- SERVER_URL=https://georchestra.mydomain.org
+      - TZ=Europe/Paris
       - XMS=256M
-      - XMX=512M
+      - XMX=8G
     restart: always
 
-  ldapadmin:
-    image: georchestra/ldapadmin:latest
+  console:
+    image: georchestra/console:latest
     depends_on:
       - ldap
       - database
     volumes:
-      - /etc/georchestra:/etc/georchestra
+      - ./config:/etc/georchestra
     environment:
       - XMS=256M
       - XMX=1G
-    restart: always
 
   geonetwork:
     image: georchestra/geonetwork:3-latest
@@ -144,7 +143,7 @@ services:
       - ldap
       - database
     volumes:
-      - /etc/georchestra:/etc/georchestra
+      - ./config:/etc/georchestra
       - geonetwork_datadir:/mnt/geonetwork_datadir
     environment:
       - XMS=256M
@@ -156,7 +155,7 @@ services:
     depends_on:
       - database
     volumes:
-      - /etc/georchestra:/etc/georchestra
+      - ./config:/etc/georchestra
     environment:
       - XMS=256M
       - XMX=1G

@@ -40,16 +40,15 @@ services:
     volumes:
       - smtp_maildir:/home/smtp/Maildir/
 
-  ssh:
-    build: ../georchestra/docker/ssh_data
-    image: georchestra/ssh_data:latest
-    environment:
-      - TZ=Europe/Paris
-    ports:
-      - "2222:22"
-    volumes:
-      - geoserver_geodata:/mnt/geoserver_geodata
-      - /docker/georchestra/geoserver_geodata:/mnt/geoserver_geodata
+#  ssh:
+#    image: georchestra/ssh_data:latest
+#    environment:
+#      - TZ=Europe/Paris
+#    ports:
+#      - "2222:22"
+#    volumes:
+#      - geoserver_geodata:/mnt/geoserver_geodata
+#      - /docker/georchestra/geoserver_geodata:/mnt/geoserver_geodata
 
   geosync:
     build: ../georchestra/geosync
