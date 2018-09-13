@@ -1,0 +1,5 @@
+./resources/ssl/*univ-fcomte*
+**/.geosync.conf
+**/.pgpass
+./docker-compose.geosync-prod.yml
+
