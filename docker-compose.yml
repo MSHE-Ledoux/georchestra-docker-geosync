@@ -120,7 +120,7 @@ services:
       - ./config:/etc/georchestra
     environment:
       # variable de production déplacée dans docker-compose.geosync-prod.yml
-      #- SERVER_URL=https://georchestra.mydomain.org
+      #- SERVER_URL=https://georchestra-dev.umrthema.univ-fcomte.fr
       - TZ=Europe/Paris
       - XMS=256M
       - XMX=8G
