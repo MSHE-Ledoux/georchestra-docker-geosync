@@ -18,9 +18,8 @@ volumes:
 
 services:
   database:
-    #image: geosync/database
-    image: georchestra/database
-    #build: ../georchestra/postgresql.geosync
+    image: geosync/database
+    build: ../georchestra/postgresql.geosync
     ports:
       - "5432:5432"
     environment:

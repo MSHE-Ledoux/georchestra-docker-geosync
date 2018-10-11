@@ -14,7 +14,7 @@ cd docker && git submodule update --init --remote
 
 Edit your `/etc/hosts` file with the following:
 ```
-127.0.1.1	georchestra.mydomain.org
+127.0.1.1	georchestra-dev.umrthema.univ-fcomte.fr
 ```
 
 Run geOrchestra with
@@ -22,7 +22,7 @@ Run geOrchestra with
 docker-compose up
 ```
 
-Open [https://georchestra.mydomain.org/](https://georchestra.mydomain.org/) in your browser.
+Open [https://georchestra-dev.umrthema.univ-fcomte.fr/](https://georchestra.mydomain.org/) in your browser.
 
 To login, use these credentials:
  * `testuser` / `testuser`
@@ -30,14 +30,14 @@ To login, use these credentials:
 
 To upload data into the GeoServer data volume (`geoserver_geodata`), use rsync:
 ```
-rsync -arv -e 'ssh -p 2222' /path/to/geodata/ geoserver@georchestra.mydomain.org:/mnt/geoserver_geodata/
+rsync -arv -e 'ssh -p 2222' /path/to/geodata/ geoserver@georchestra-dev.umrthema.univ-fcomte.fr:/mnt/geoserver_geodata/
 ```
 (password is: `geoserver`)
 
 Files uploaded into this volume will also be available to the geoserver instance in `/mnt/geoserver_geodata/`.
 
 Emails sent by the SDI (eg when users request a new password) will not be relayed on the internet but trapped by a local SMTP service.  
-These emails can be read on https://georchestra.mydomain.org/webmail/ (with login `smtp` and password `smtp`).
+These emails can be read on https://georchestra-dev.umrthema.univ-fcomte.fr/webmail/ (with login `smtp` and password `smtp`).
 
 Stop geOrchestra with
 ```

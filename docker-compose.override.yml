@@ -14,7 +14,7 @@ services:
       - "80:80"
       - "443:443"
       # uncomment the next line to get a web ui + api at https://georchestra-dev.umrthema.univ-fcomte.fr:8080/traefik/
-      #- "8080:8080" 
+      - "8080:8080" 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./resources/ssl:/etc/traefik/ssl/
