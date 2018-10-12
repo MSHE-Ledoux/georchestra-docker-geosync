@@ -17,7 +17,7 @@ services:
     environment:
       - TZ=Europe/Paris
       # variables de production déplacées dans docker-compose.geosync-prod.yml
-      #- SERVER_URL=https://georchestra.mydomain.org
+      #- SERVER_URL=https://georchestra-dev.umrthema.univ-fcomte.fr
       #- OCL_URL=https://owncloud.mydomain.org
     volumes:
       - /docker/georchestra/georchestra_ouvert:/home/georchestra-ouvert

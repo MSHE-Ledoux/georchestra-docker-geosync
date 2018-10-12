@@ -156,7 +156,7 @@ endpoint = "unix:///var/run/docker.sock"
 #
 # Required
 #
-domain = "umrthema.univ-fcomte.fr"
+domain = "univ-fcomte.fr"
 
 # Enable watch docker changes
 #
