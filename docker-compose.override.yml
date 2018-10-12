@@ -18,7 +18,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./resources/ssl:/etc/traefik/ssl/
-      - ./resources/traefik.toml:/traefik.toml
+      # fichier de production défini dans docker-compose.geosync-prod.yml
+      #- ./resources/traefik.toml:/traefik.toml
 
   proxy:
     labels:
