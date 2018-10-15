@@ -1,4 +1,4 @@
 ./resources/ssl/*univ-fcomte*
 **/docker-compose.geosync-prod.yml
-**/traefik-gdev.toml
+**/traefik-*.toml
 
