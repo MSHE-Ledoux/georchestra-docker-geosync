@@ -8,7 +8,7 @@ volumes:
   smtp_maildir:
 
 services:
-  georchestra-dev.umrthema.univ-fcomte.fr:
+  georchestra-docker.umrthema.univ-fcomte.fr:
     image: traefik:1.4.5
     ports:
       - "80:80"
