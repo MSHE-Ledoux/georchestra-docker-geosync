@@ -51,7 +51,7 @@ services:
     restart: always
 
   proxy:
-    image: georchestra/security-proxy:latest
+    image: georchestra/security-proxy:18.06
     depends_on:
       - ldap
       - database
@@ -63,7 +63,7 @@ services:
     restart: always
 
   cas:
-    image: georchestra/cas:latest
+    image: georchestra/cas:18.06
     depends_on:
       - ldap
     volumes:
@@ -74,7 +74,7 @@ services:
     restart: always
 
   header:
-    image: georchestra/header:latest
+    image: georchestra/header:18.06
     volumes:
       - ./config:/etc/georchestra
     environment:
@@ -83,7 +83,7 @@ services:
     restart: always
 
   mapfishapp:
-    image: georchestra/mapfishapp:latest
+    image: georchestra/mapfishapp:18.06
     depends_on:
       - database
     volumes:
@@ -95,7 +95,7 @@ services:
     restart: always
 
   extractorapp:
-    image: georchestra/extractorapp:latest
+    image: georchestra/extractorapp:18.06
     depends_on:
       - database
     volumes:
@@ -127,7 +127,7 @@ services:
     restart: always
 
   console:
-    image: georchestra/console:latest
+    image: georchestra/console:18.06
     depends_on:
       - ldap
       - database
@@ -138,7 +138,7 @@ services:
       - XMX=1G
 
   geonetwork:
-    image: georchestra/geonetwork:3-latest
+    image: georchestra/geonetwork:341-18.06
     depends_on:
       - ldap
       - database
@@ -151,7 +151,7 @@ services:
     restart: always
 
   analytics:
-    image: georchestra/analytics:latest
+    image: georchestra/analytics:18.06
     depends_on:
       - database
     volumes:
